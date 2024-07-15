@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 
-namespace APICrud.Model
+namespace APICrud.Domain.Model
 {
     [Table("employee")]
     public class Employee
@@ -14,7 +14,7 @@ namespace APICrud.Model
         public string? photo { get; private set; }
 
         public Employee(string name, int age, string photo)
-        { 
+        {
             this.name = name ?? throw new ArgumentNullException(nameof(name));
             this.age = age;
             this.photo = photo;

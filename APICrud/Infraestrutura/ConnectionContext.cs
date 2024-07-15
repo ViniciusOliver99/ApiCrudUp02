@@ -1,4 +1,4 @@
-﻿using APICrud.Model;
+﻿using APICrud.Domain.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace APICrud.Infraestrutura

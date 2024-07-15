@@ -1,4 +1,4 @@
-﻿namespace APICrud.ViewModel
+﻿namespace APICrud.Aplication.ViewModel
 {
     public class EmployeeViewModel
     {

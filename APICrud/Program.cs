@@ -1,5 +1,5 @@
-using APICrud.Infraestrutura;
-using APICrud.Model;
+using APICrud.Domain.Model;
+using APICrud.Infraestrutura.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -79,7 +79,7 @@ namespace APICrud
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/error");
+                app.UseExceptionHandler("/error-development");
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }

@@ -1,5 +1,5 @@
-﻿using APICrud.Model;
-using APICrud.ViewModel;
+﻿using APICrud.Aplication.ViewModel;
+using APICrud.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,9 +48,6 @@ namespace APICrud.Controllers
         [HttpGet]
         public IActionResult Get(int pageNumber, int pageQuantity) 
         {
-            _looger.Log(LogLevel.Error, "Teve um erro =(");
-
-            throw new Exception("error teste");
 
             var employee = _employeeRepository.Get(pageNumber, pageQuantity);
             return Ok(employee);
