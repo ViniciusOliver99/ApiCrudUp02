@@ -1,9 +1,11 @@
+using APICrud.Aplication.Mapping;
 using APICrud.Domain.Model;
 using APICrud.Infraestrutura.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+
 
 namespace APICrud
 {
@@ -20,8 +22,10 @@ namespace APICrud
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+
             builder.Services.AddSwaggerGen(c =>
             {
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

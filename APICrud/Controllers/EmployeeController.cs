@@ -1,5 +1,7 @@
 ﻿using APICrud.Aplication.ViewModel;
+using APICrud.Domain.DTOS;
 using APICrud.Domain.Model;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +13,13 @@ namespace APICrud.Controllers
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly ILogger<EmployeeController> _looger;
+        private readonly IMapper _mapper;
 
-        public EmployeeController(IEmployeeRepository employeeRepository, ILogger<EmployeeController> looger)
+        public EmployeeController(IEmployeeRepository employeeRepository, ILogger<EmployeeController> looger, IMapper mapper)
         {
             _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
             _looger = looger ?? throw new ArgumentNullException(nameof(looger));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [Authorize]
@@ -51,6 +55,16 @@ namespace APICrud.Controllers
 
             var employee = _employeeRepository.Get(pageNumber, pageQuantity);
             return Ok(employee);
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult Search(int id)
+        {
+            var employess = _employeeRepository.Get(id);
+            var employessDTO = _mapper.Map<EmployeeDTO>(employess);
+
+            return Ok(employessDTO);
         }
     }
 }
