@@ -1,11 +1,14 @@
 using APICrud.Aplication.Mapping;
 using APICrud.Domain.Model;
 using APICrud.Infraestrutura.Repositories;
+using APICrud.SwaggerConfig;
+using Asp.Versioning.ApiExplorer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text;
-
+using Versionamento.API.SwaggerConfig;
 
 namespace APICrud
 {
@@ -21,13 +24,21 @@ namespace APICrud
 
             // Add services to the container.
 
+
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper(typeof(DomainToDTOMapping));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddApiVersioning().AddMvc().AddApiExplorer(setup => {
+                setup.GroupNameFormat = "'v'VVV";
+                setup.SubstituteApiVersionInUrl = true;
+            });
+            builder.Services.ConfigureOptions<ConfigureSwaggerGenOptions>();
 
             builder.Services.AddSwaggerGen(c =>
             {
+                c.OperationFilter<DefaultValues>();
+
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -85,7 +96,14 @@ namespace APICrud
             {
                 app.UseExceptionHandler("/error-development");
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(options =>
+                {
+                    var version = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+                    foreach (var description in version.ApiVersionDescriptions)
+                    {
+                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"Web Api - {description.GroupName.ToUpper()}");
+                    }
+                });
             }
             else
             {

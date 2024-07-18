@@ -46,3 +46,12 @@ C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Micro
 C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Humanizer.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Asp.Versioning.Abstractions.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Asp.Versioning.Http.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Asp.Versioning.Mvc.dll
+C:\Users\Vinicius\Desktop\Pastas\Projetos\APICrud\APICrud\bin\Debug\net7.0\Asp.Versioning.Mvc.ApiExplorer.dll

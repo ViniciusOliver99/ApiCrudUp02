@@ -1,14 +1,16 @@
 ﻿using APICrud.Aplication.ViewModel;
 using APICrud.Domain.DTOS;
 using APICrud.Domain.Model;
+using Asp.Versioning;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APICrud.Controllers
+namespace APICrud.Controllers.v1
 {
+    [ApiVersion(1.0)]
     [ApiController]
-    [Route("api/v1/employee")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -24,7 +26,7 @@ namespace APICrud.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add([FromForm]EmployeeViewModel employeeView)
+        public IActionResult Add([FromForm] EmployeeViewModel employeeView)
         {
             var filePath = Path.Combine("Storage", employeeView.Photo.FileName);
 
@@ -50,7 +52,7 @@ namespace APICrud.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult Get(int pageNumber, int pageQuantity) 
+        public IActionResult Get(int pageNumber, int pageQuantity)
         {
 
             var employee = _employeeRepository.Get(pageNumber, pageQuantity);
